@@ -1,9 +1,91 @@
-#content {
+content {
   margin-left: auto;
   margin-right: auto;
   width: 650px;
+  text-align: center;
+  color: whitesmoke;
 }
 
-#greeting-container {
-  margin-top: 20px;
+fact-container {
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 650px;
+  color: whitesmoke;
+  text-align: center;
+  
+}
+
+button {
+  display: block;
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+}
+
+body {
+  background-color: powderblue;
+}
+
+p {
+    color: whitesmoke;
+    text-align: center;
+    font-size: large;
+    font: verdana;
+    max-width: 1500px;
+}
+
+h1 {
+  color: gray;
+  text-align: center;
+  font: verdana;
+}
+
+h2 {
+    text-align: center;
+    color: whitesmoke;
+}
+
+h3 {
+    text-align: center;
+    color: whitesmoke;
+}
+
+h4 {
+    text-align: center;
+    color: whitesmoke;
+}
+
+
+h5 {
+    color: white;
+}
+
+h6 {
+    color: white;
+    text-align: center;
+}
+
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
 }
