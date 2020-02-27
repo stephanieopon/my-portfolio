@@ -32,9 +32,10 @@ function addRandomFact() {
 
 function requestHello() {
    fetch('/data').then(response => response.text()).then((hello)=> {
-    document.getElementById('hello-container').innerText = hello;
-    location.replace('/data');
+    document.getElementById('hello-container').innerHTML = hello;
+    //location.replace('/data');
     addToDom(hello);
+    console.log("this function works");
   });
   /*const response = await fetch('/data');
   const hello = await response.text();
@@ -47,4 +48,12 @@ function addToDom(hello) {
   console.log('Adding msg to dom: ' + hello);
   const helloContainer = document.getElementById('hello-container');
   helloContainer.innerText = hello;
+}
+
+function fetchJSON() {
+    fetch('/data').then(response => response.json()).then((data) => {
+        document.getElementById('json-container').innerText = data;
+        console.log('Output: '+ data);
+    });
+        console.log("this function works");
 }
