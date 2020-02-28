@@ -27,20 +27,29 @@ import java.io.PrintWriter;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+   ArrayList<String> comments = new ArrayList<String>();
+
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    ArrayList<String> msgs = new ArrayList<String>();
-    msgs.add("first message");
-    msgs.add("second message");
-    msgs.add("third message");
 
     response.setContentType("text/html;");
     PrintWriter out = response.getWriter();
-    //response.getWriter().println("<h1>Hello Stephanie!</h1>");
     Gson gson = new Gson();
-    String json = gson.toJson(msgs);
+    String json = gson.toJson(comments);
     out.print(json);
     out.flush();
 
   }
+
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+      String comment = request.getParameter("text-input");
+      comments.add(comment);
+      doGet(request, response);
+      
+  }
+
+
+
 }
