@@ -51,9 +51,12 @@ function addToDom(hello) {
 }
 
 function fetchJSON() {
+
     fetch('/data').then(response => response.json()).then((data) => {
-        document.getElementById('json-container').innerText = data;
+        document.getElementById('json-container').innerHTML = data.join("<br>"+ "<br>");
         console.log('Output: '+ data);
     });
         console.log("this function works");
 }
+
+

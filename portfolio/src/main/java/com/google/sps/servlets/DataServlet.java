@@ -48,9 +48,11 @@ public class DataServlet extends HttpServlet {
 
     }
 
+    
     Gson gson = new Gson();
-
     response.setContentType("application/json;");
+
+    //response.setContentType("application/json;");
     response.getWriter().println(gson.toJson(comments));
 
     // response.setContentType("text/html;");
@@ -64,15 +66,12 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
       String comment = request.getParameter("text-input");
-      //comments.add(comment);
-      //doGet(request, response);
 
       DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
       Entity commentEntity = new Entity("Comment");
       commentEntity.setProperty("comment", comment);
-      //commentEntity.setProperty("comment2", msg2);
-    datastore.put(commentEntity);
-    response.sendRedirect("/index.html");
+      datastore.put(commentEntity);
+      response.sendRedirect("/index.html");
 
   }
 
