@@ -43,24 +43,13 @@ public class DataServlet extends HttpServlet {
     PreparedQuery results = datastore.prepare(query);
 
     for (Entity entity : results.asIterable()) {
-      
       comments.add((String) entity.getProperty("comment"));
+      }
 
-    }
-
-    
     Gson gson = new Gson();
     response.setContentType("application/json;");
-
-    //response.setContentType("application/json;");
     response.getWriter().println(gson.toJson(comments));
 
-    // response.setContentType("text/html;");
-    // PrintWriter out = response.getWriter();
-    // Gson gson = new Gson();
-    // String json = gson.toJson(comments);
-    // out.print(json);
-    // out.flush();
   }
 
   @Override
@@ -74,7 +63,4 @@ public class DataServlet extends HttpServlet {
       response.sendRedirect("/index.html");
 
   }
-
-
-
 }
