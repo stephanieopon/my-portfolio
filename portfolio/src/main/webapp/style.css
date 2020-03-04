@@ -15,7 +15,11 @@ fact-container {
   text-align: center;
   
 }
+comment-section {
+text-align: left;
+color: darkgray;
 
+}
 button {
   display: block;
   max-width: 500px;
@@ -42,12 +46,10 @@ h1 {
 }
 
 h2 {
-    text-align: center;
     color: whitesmoke;
 }
 
 h3 {
-    text-align: center;
     color: whitesmoke;
 }
 

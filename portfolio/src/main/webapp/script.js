@@ -29,3 +29,34 @@ function addRandomFact() {
   const factContainer = document.getElementById('fact-container');
   factContainer.innerText = fact;
 }
+
+function requestHello() {
+   fetch('/data').then(response => response.text()).then((hello)=> {
+    document.getElementById('hello-container').innerHTML = hello;
+    //location.replace('/data');
+    addToDom(hello);
+    console.log("this function works");
+  });
+  /*const response = await fetch('/data');
+  const hello = await response.text();
+  document.getElementById('hello-container').innerText = hello;
+  location.replace('/data')
+  addToDom(hello)*/
+}
+
+function addToDom(hello) {
+  console.log('Adding msg to dom: ' + hello);
+  const helloContainer = document.getElementById('hello-container');
+  helloContainer.innerText = hello;
+}
+
+function fetchJSON() {
+
+    fetch('/data').then(response => response.json()).then((data) => {
+        document.getElementById('json-container').innerHTML = data.join("<br>"+ "<br>");
+        console.log('Output: '+ data);
+    });
+        console.log("this function works");
+}
+
+
