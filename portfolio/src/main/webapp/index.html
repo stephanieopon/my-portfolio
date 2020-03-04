@@ -22,6 +22,33 @@
       
       <div id="fact-container"></div>
       <p> Here's a page with <a href = "images.html">pictures </a> (some of me, some not of me) I like! </p>
+
+    
+
+
     </div>
+
+    <div style="background-color:grey;color:white;padding:20px;">
+      
+
+      <form action="/data" method="POST">
+      <p>Enter a comment:</p>
+      
+      <br/><br/><label for="name">Comment:</label>
+      <!-- <input type="text" id="lname" name="lname" value="Doe"><br><br> -->
+      <textarea name="text-input" rows="4" cols="50"> </textarea>
+      <br/><br/>
+      <input type="submit" />
+    
+      </form>
+    <h2> Comments </h2>
+    <body onload=" fetchJSON();">
+    <div id="hello-container"></div>
+    <div id="json-container"></div>
+
+
+    </div>
+
+
   </body>
 </html>
