@@ -27,8 +27,7 @@ public class LoginServlet extends HttpServlet {
     PrintWriter out = response.getWriter();
     String data = "";
 
-
-    UserService userService = UserServiceFactory.getUserService();
+    UserService userService = UserServiceFactory.getUserService();    
     
     if (userService.isUserLoggedIn()) {
       data = "User is logged in";
@@ -36,13 +35,10 @@ public class LoginServlet extends HttpServlet {
       data = "User is not logged in";
       String urlToRedirectToAfterUserLogsIn = "/log";
       String loginUrl = userService.createLoginURL(urlToRedirectToAfterUserLogsIn);
-
       response.getWriter().println("<p>Hello stranger.</p>");
       response.getWriter().println("<p>Login <a href=\"" + loginUrl + "\">here</a>.</p>");
     }
-
     response.getWriter().print(data);
-   
   }
 }
 
