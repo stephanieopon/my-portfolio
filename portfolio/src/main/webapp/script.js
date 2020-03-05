@@ -53,6 +53,8 @@ function fetchJSON() {
         console.log("this function works");
 }
 
+
+
 function fetchLogin() {
 
     fetch('/log').then(response => response.text()).then((log) => {
@@ -61,7 +63,10 @@ function fetchLogin() {
         if (log =="User is logged in" ) {
             fetchJSON();
         } else {
-            
+            window.location.assign("/log");
+            if (log == "User is logged in") {
+                window.location.assign("/");
+            }
         }
     });
     console.log("this works");

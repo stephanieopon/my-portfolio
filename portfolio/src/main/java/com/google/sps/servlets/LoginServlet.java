@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
       data = "User is logged in";
     } else {
       data = "User is not logged in";
-      String urlToRedirectToAfterUserLogsIn = "/log";
+      String urlToRedirectToAfterUserLogsIn = "/index.html";
       String loginUrl = userService.createLoginURL(urlToRedirectToAfterUserLogsIn);
       response.getWriter().println("<p>Hello stranger.</p>");
       response.getWriter().println("<p>Login <a href=\"" + loginUrl + "\">here</a>.</p>");
