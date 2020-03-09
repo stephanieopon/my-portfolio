@@ -33,15 +33,10 @@ function addRandomFact() {
 function requestHello() {
    fetch('/data').then(response => response.text()).then((hello)=> {
     document.getElementById('hello-container').innerHTML = hello;
-    //location.replace('/data');
     addToDom(hello);
     console.log("this function works");
   });
-  /*const response = await fetch('/data');
-  const hello = await response.text();
-  document.getElementById('hello-container').innerText = hello;
-  location.replace('/data')
-  addToDom(hello)*/
+  
 }
 
 function addToDom(hello) {
@@ -51,7 +46,6 @@ function addToDom(hello) {
 }
 
 function fetchJSON() {
-
     fetch('/data').then(response => response.json()).then((data) => {
         document.getElementById('json-container').innerHTML = data.join("<br>"+ "<br>");
         console.log('Output: '+ data);
@@ -59,4 +53,22 @@ function fetchJSON() {
         console.log("this function works");
 }
 
+
+
+function fetchLogin() {
+
+    fetch('/log').then(response => response.text()).then((log) => {
+        //document.getElementById('login-container').innerHTML = log;
+        console.log('Msg '+ log);
+        if (log =="User is logged in" ) {
+            fetchJSON();
+        } else {
+            window.location.assign("/log");
+            if (log == "User is logged in") {
+                window.location.assign("/");
+            }
+        }
+    });
+    console.log("this works");
+}
 

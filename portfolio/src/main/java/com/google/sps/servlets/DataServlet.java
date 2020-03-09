@@ -28,6 +28,8 @@ import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
@@ -40,27 +42,21 @@ public class DataServlet extends HttpServlet {
     ArrayList<String> comments = new ArrayList<String>();
     Query query = new Query("Comment");
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+   
+
+
     PreparedQuery results = datastore.prepare(query);
 
     for (Entity entity : results.asIterable()) {
-      
-      comments.add((String) entity.getProperty("comment"));
+      comments.add((String) entity.getProperty("user") +": " + (String) entity.getProperty("comment"));
+      }
 
-    }
-
-    
     Gson gson = new Gson();
     response.setContentType("application/json;");
-
-    //response.setContentType("application/json;");
     response.getWriter().println(gson.toJson(comments));
 
-    // response.setContentType("text/html;");
-    // PrintWriter out = response.getWriter();
-    // Gson gson = new Gson();
-    // String json = gson.toJson(comments);
-    // out.print(json);
-    // out.flush();
+
+
   }
 
   @Override
@@ -68,13 +64,14 @@ public class DataServlet extends HttpServlet {
       String comment = request.getParameter("text-input");
 
       DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+      UserService userService = UserServiceFactory.getUserService();
+      String userEmail = userService.getCurrentUser().getEmail();
       Entity commentEntity = new Entity("Comment");
       commentEntity.setProperty("comment", comment);
+      commentEntity.setProperty("user", userEmail);
+
       datastore.put(commentEntity);
       response.sendRedirect("/index.html");
 
   }
-
-
-
 }
